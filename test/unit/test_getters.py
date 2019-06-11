@@ -28,6 +28,21 @@ class TestGetter(BaseTestGetters):
         return facts
 
     @wrap_test_cases
+    def test_get_environment(self, test_case):
+        """Test get_facts method."""
+        modale_environment = {
+            "fans": dict,
+            "cpu": dict,
+            "memory": dict,
+            "power": dict,
+            "temperature": dict,
+        }
+        _environment = self.device.get_environment()
+        assert helpers.test_model(modale_environment, _environment)
+        assert len(_environment) > 0
+        return _environment
+
+    @wrap_test_cases
     def test_get_mac_address_table(self, test_case):
         """Test get_mac_address_table."""
         modale_mac_address_table = {

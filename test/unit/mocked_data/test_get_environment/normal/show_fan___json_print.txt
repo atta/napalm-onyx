@@ -1,0 +1,28 @@
+{
+    "MGMT": [
+        {
+            "Device": "FAN1",
+            "Status": "OK",
+            "Fan": "F1",
+            "Speed (RPM)": "6895.00"
+        },
+        {
+            "Device": "FAN2",
+            "Status": "OK",
+            "Fan": "F1",
+            "Speed (RPM)": "7041.00"
+        },
+        {
+            "Device": "FAN3",
+            "Status": "OK",
+            "Fan": "F1",
+            "Speed (RPM)": "6967.00"
+        },
+        {
+            "Device": "FAN4",
+            "Status": "OK",
+            "Fan": "F1",
+            "Speed (RPM)": "7041.00"
+        }
+    ]
+}

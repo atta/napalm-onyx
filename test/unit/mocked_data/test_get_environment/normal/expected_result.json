@@ -1,0 +1,83 @@
+    {
+        "fans": {
+            "FAN1": {
+                "status": true
+            },
+            "FAN2": {
+                "status": true
+            },
+            "FAN3": {
+                "status": true
+            },
+            "FAN4": {
+                "status": true
+            }
+        },
+        "cpu": {
+            "CPU1": {
+                "%usage": 1
+            },
+            "CPU2": {
+                "%usage": 3
+            },
+            "CPU3": {
+                "%usage": 2
+            },
+            "CPU4": {
+                "%usage": 2
+            }
+        },
+        "memory": {
+            "available_ram": 7811,
+            "used_ram": 2663
+        },
+        "power": {
+            "PS1": {
+                "status": true,
+                "capacity": 460.0,
+                "output": 0
+            },
+            "PS2": {
+                "status": true,
+                "capacity": 460.0,
+                "output": 46.22
+            }
+        },
+        "temperature": {
+            "T1 SPC": {
+                "is_alert": false,
+                "is_critical": false,
+                "temperature": 50.0
+            },
+            "T1 Ports AMB temp": {
+                "is_alert": false,
+                "is_critical": false,
+                "temperature": 32.5
+            },
+            "T1 Board AMB temp": {
+                "is_alert": false,
+                "is_critical": false,
+                "temperature": 31.0
+            },
+            "T1 CPU Core Sensor": {
+                "is_alert": false,
+                "is_critical": false,
+                "temperature": 25.0
+            },
+            "T2 CPU Core Sensor": {
+                "is_alert": false,
+                "is_critical": false,
+                "temperature": 25.0
+            },
+            "T3 CPU Core Sensor": {
+                "is_alert": false,
+                "is_critical": false,
+                "temperature": 26.0
+            },
+            "T4 CPU Core Sensor": {
+                "is_alert": false,
+                "is_critical": false,
+                "temperature": 26.0
+            }
+        }
+    }

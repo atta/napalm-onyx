@@ -55,7 +55,7 @@ IPV4_ADDR_REGEX = IP_ADDR_REGEX
 IPV6_ADDR_REGEX_1 = r"::"
 IPV6_ADDR_REGEX_2 = r"[0-9a-fA-F:]{1,39}::[0-9a-fA-F:]{1,39}"
 IPV6_ADDR_REGEX_3 = r"[0-9a-fA-F]{1,3}:[0-9a-fA-F]{1,3}:[0-9a-fA-F]{1,3}:[0-9a-fA-F]{1,3}:" \
-                     r"[0-9a-fA-F]{1,3}:[0-9a-fA-F]{1,3}:[0-9a-fA-F]{1,3}:[0-9a-fA-F]{1,3}"
+    r"[0-9a-fA-F]{1,3}:[0-9a-fA-F]{1,3}:[0-9a-fA-F]{1,3}:[0-9a-fA-F]{1,3}"
 # Should validate IPv6 address using an IP address library after matching with this regex
 IPV6_ADDR_REGEX = r"(?:{}|{}|{})".format(IPV6_ADDR_REGEX_1, IPV6_ADDR_REGEX_2, IPV6_ADDR_REGEX_3)
 IPV4_OR_IPV6_REGEX = r"(?:{}|{})".format(IPV4_ADDR_REGEX, IPV6_ADDR_REGEX)
@@ -488,6 +488,80 @@ class ONYXSSHDriver(NetworkDriver):
             "hostname": py23_compat.text_type(hostname),
             "interface_list": interface_list,
         }
+
+    def get_environment(self):
+        """Return a set of environmental data from the devices."""
+        # defaults
+        fans = {}
+        cpu = {}
+        memory = {}
+        power = {}
+        temperature = {}
+
+        self.disable_paging()
+        show_fan = json.loads(self.device.send_command('show fan | json-print'))
+        show_power = json.loads(self.device.send_command('show power | json-print'))
+        show_temperature = json.loads(self.device.send_command('show temperature | json-print'))
+        show_resources = json.loads(self.device.send_command('show resources | json-print'))
+
+        if 'MGMT' in show_fan:
+            for fan in show_fan['MGMT']:
+                if fan['Status'] == 'OK':
+                    _status = True
+                else:
+                    _status = False
+
+                fans[fan['Device']] = {'status': _status}
+
+        if 'Number of CPUs' in show_resources:
+            for index in list(range(1, int(show_resources['Number of CPUs'])+1)):
+                _usage = show_resources['CPU ' + str(index)]['Utilization']
+                cpu['CPU' + str(index)] = {'%usage': int(_usage.replace('%', ''))}
+
+        if 'Physical' in show_resources:
+            _available_ram = int(show_resources['Physical'][0]['Total'].split()[0])
+            _used_ram = int(show_resources['Physical'][0]['Used'].split()[0])
+
+            memory = {'available_ram': _available_ram, 'used_ram': _used_ram}
+
+        if 'MGMT' in show_power:
+            for ps in show_power['MGMT']:
+                if ps['Status'] == 'OK':
+                    _status = True
+                else:
+                    _status = False
+
+                try:
+                    _capacity = float(ps['Capacity [Watts]'])
+                except ValueError:
+                    _capacity = 0
+
+                try:
+                    _output = float(ps['Power [Watts]'])
+                except ValueError:
+                    _output = 0
+
+                power[ps['Device']] = {'status': _status, 'capacity': _capacity, 'output': _output}
+
+        if 'Temperature per module' in show_temperature:
+            if 'MGMT' in show_temperature['Temperature per module']:
+                for temp in show_temperature['Temperature per module']['MGMT']:
+                    if temp['Status'] == 'OK':
+                        _is_alert = False
+                    else:
+                        _is_alert = True
+
+                    _name = ' '.join([temp['Reg'], temp['Component']])
+
+                    try:
+                        _temperature = float(temp['CurTemp (Celsius)'])
+                    except ValueError:
+                        _temperature = 0
+
+                    temperature[_name] = {'is_alert': _is_alert, 'is_critical': False, 'temperature': _temperature}
+
+        output = {'fans': fans, 'cpu': cpu, 'memory': memory, 'power': power, 'temperature': temperature}
+        return output
 
     def get_interfaces(self):
         """

@@ -1,0 +1,38 @@
+{
+    "CPU 4": {
+        "Peak Utilization Last Hour": "24% at 2002/02/14 20:47:15",
+        "Avg. Utilization Last Hour": "2%",
+        "Utilization": "2%"
+    },
+    "Number of CPUs": "4",
+    "Swap": [
+        {
+            "Used": "0 MB",
+            "Total": "0 MB",
+            "Free": "0 MB"
+        }
+    ],
+    "CPU 3": {
+        "Peak Utilization Last Hour": "23% at 2002/02/14 20:47:15",
+        "Avg. Utilization Last Hour": "2%",
+        "Utilization": "2%"
+    },
+    "CPU 2": {
+        "Peak Utilization Last Hour": "22% at 2002/02/14 20:47:45",
+        "Avg. Utilization Last Hour": "2%",
+        "Utilization": "3%"
+    },
+    "CPU 1": {
+        "Peak Utilization Last Hour": "25% at 2002/02/14 20:36:00",
+        "Avg. Utilization Last Hour": "1%",
+        "Utilization": "1%"
+    },
+    "CPU load averages": "0.12 / 0.24 / 0.23",
+    "Physical": [
+        {
+            "Used": "2663 MB",
+            "Total": "7811 MB",
+            "Free": "5148 MB"
+        }
+    ]
+}

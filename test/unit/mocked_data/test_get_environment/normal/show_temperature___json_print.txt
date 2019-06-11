@@ -1,0 +1,48 @@
+{
+    "Temperature per module": {
+        "MGMT": [
+            {
+                "Status": "OK",
+                "CurTemp (Celsius)": "50.00",
+                "Component": "SPC",
+                "Reg": "T1"
+            },
+            {
+                "Status": "OK",
+                "CurTemp (Celsius)": "32.50",
+                "Component": "Ports AMB temp",
+                "Reg": "T1"
+            },
+            {
+                "Status": "OK",
+                "CurTemp (Celsius)": "31.00",
+                "Component": "Board AMB temp",
+                "Reg": "T1"
+            },
+            {
+                "Status": "OK",
+                "CurTemp (Celsius)": "25.00",
+                "Component": "CPU Core Sensor",
+                "Reg": "T1"
+            },
+            {
+                "Status": "OK",
+                "CurTemp (Celsius)": "25.00",
+                "Component": "CPU Core Sensor",
+                "Reg": "T2"
+            },
+            {
+                "Status": "OK",
+                "CurTemp (Celsius)": "26.00",
+                "Component": "CPU Core Sensor",
+                "Reg": "T3"
+            },
+            {
+                "Status": "OK",
+                "CurTemp (Celsius)": "26.00",
+                "Component": "CPU Core Sensor",
+                "Reg": "T4"
+            }
+        ]
+    }
+}

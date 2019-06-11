@@ -1,0 +1,28 @@
+{
+    "Total power used": "46.22 Watts",
+    "Maximum consumed power of all turned on modules": "300.00 Watts",
+    "Total power capacity": "920.00 Watts",
+    "Total power available": "873.78 Watts",
+    "MGMT": [
+        {
+            "Feed": "AC",
+            "Status": "OK",
+            "Voltage [Volts]": "-",
+            "Power [Watts]": "-",
+            "Current [Amp]": "-",
+            "Device": "PS1",
+            "Sensor": "PS1 12V",
+            "Capacity [Watts]": "460.00"
+        },
+        {
+            "Feed": "AC",
+            "Status": "OK",
+            "Voltage [Volts]": "12.04",
+            "Power [Watts]": "46.22",
+            "Current [Amp]": "3.84",
+            "Device": "PS2",
+            "Sensor": "PS2 12V",
+            "Capacity [Watts]": "460.00"
+        }
+    ]
+}
